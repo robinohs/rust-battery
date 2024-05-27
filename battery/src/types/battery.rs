@@ -141,6 +141,11 @@ impl Battery {
     pub fn time_to_empty(&self) -> Option<Time> {
         self.0.time_to_empty()
     }
+
+    /// Name extracted from path (using file_name() for path).
+    pub fn name(&self) -> Option<String> {
+        self.0.name()
+    }
 }
 
 impl fmt::Debug for Battery {
