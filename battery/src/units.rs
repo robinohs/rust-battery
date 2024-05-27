@@ -69,7 +69,7 @@
 #![allow(unused_macros)]
 
 // Re-exports for easier crate usage
-pub use uom::si::f32::{
+pub use uom::si::f64::{
     ElectricCharge, ElectricCurrent, ElectricPotential, Energy, Power, Ratio, ThermodynamicTemperature, Time,
 };
 pub use uom::si::Unit;
@@ -102,7 +102,7 @@ macro_rules! impl_into_quantity {
             type Quantity = $quantity;
 
             fn from_primitive(value: T) -> Self::Quantity {
-                match &value.to_f32() {
+                match &value.to_f64() {
                     Some(value) => Self::Quantity::new::<$unit>(*value),
                     None => unreachable!(),
                 }

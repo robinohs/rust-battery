@@ -1,4 +1,4 @@
-use std::f32;
+use std::f64;
 use std::io;
 use std::path::Path;
 
@@ -145,7 +145,7 @@ impl<'p> DataBuilder<'p> {
             Some(energy) => Ok(energy),
             None => match self.charge_now() {
                 Some(charge) => Ok(charge * *self.design_voltage()?),
-                None => match fs::get::<f32, _>(self.root.join("capacity")) {
+                None => match fs::get::<f64, _>(self.root.join("capacity")) {
                     Ok(Some(capacity)) => Ok(*self.energy_full()? * percent!(capacity).into_bounded()),
                     _ => Err(Error::not_found("Unable to calculate device energy value")),
                 },
@@ -191,7 +191,7 @@ impl<'p> DataBuilder<'p> {
             let value = match fs::power(self.root.join("power_now"))? {
                 Some(power) => Some(power),
                 None => {
-                    match fs::get::<f32, _>(self.root.join("current_now"))? {
+                    match fs::get::<f64, _>(self.root.join("current_now"))? {
                         Some(current_now) => {
                             // If charge_full exists, then current_now is always reported in µA.
                             // In the legacy case, where energy only units exist, and power_now isn't present
@@ -221,22 +221,22 @@ impl<'p> DataBuilder<'p> {
                         power
                     }
                 })
-                // ACPI gives out the special 'Ones' (Constant Ones Object) value for rate
-                // when it's unable to calculate the true rate. We should set the rate zero,
-                // and wait for the BIOS to stabilise.
-                // Source: upower
-                //
-                // It come as an `0xffff` originally, but we are operating with `Power` now,
-                // so this `Ones` value is recalculated a little.
-                .map(|power| {
-                    // TODO: There might be a chance that we had lost a precision during the conversion
-                    // from the microwatts into default watts, so this should be fixed
-                    if (power.get::<watt>() - 65535.0).abs() < f32::EPSILON {
-                        watt!(0.0)
-                    } else {
-                        power
-                    }
-                })
+                // // ACPI gives out the special 'Ones' (Constant Ones Object) value for rate
+                // // when it's unable to calculate the true rate. We should set the rate zero,
+                // // and wait for the BIOS to stabilise.
+                // // Source: upower
+                // //
+                // // It come as an `0xffff` originally, but we are operating with `Power` now,
+                // // so this `Ones` value is recalculated a little.
+                // .map(|power| {
+                //     // TODO: There might be a chance that we had lost a precision during the conversion
+                //     // from the microwatts into default watts, so this should be fixed
+                //     if (power.get::<watt>() - 65535.0).abs() < f64::EPSILON {
+                //         watt!(0.0)
+                //     } else {
+                //         power
+                //     }
+                // })
                 .unwrap_or_else(|| microwatt!(0.0));
 
             // TODO: Calculate energy_rate manually, if hardware fails.
@@ -250,7 +250,7 @@ impl<'p> DataBuilder<'p> {
 
     fn state_of_charge(&self) -> Result<&Ratio> {
         self.state_of_charge.try_borrow_with(|| {
-            match fs::get::<f32, _>(self.root.join("capacity")) {
+            match fs::get::<f64, _>(self.root.join("capacity")) {
                 Ok(Some(capacity)) => Ok(percent!(capacity).into_bounded()),
                 Ok(None) if self.energy_full()?.is_sign_positive() => Ok(*self.energy()? / *self.energy_full()?),
                 // Same as upower, falling back to 0.0%
@@ -285,7 +285,7 @@ impl<'p> DataBuilder<'p> {
     }
 
     fn temperature(&self) -> Result<Option<ThermodynamicTemperature>> {
-        match fs::get::<f32, _>(self.root.join("temp")) {
+        match fs::get::<f64, _>(self.root.join("temp")) {
             Ok(Some(value)) => Ok(Some(celsius!(value / 10.0))),
             Ok(None) => Ok(None),
             Err(e) => Err(e),

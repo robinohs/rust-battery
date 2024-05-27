@@ -20,7 +20,7 @@ is-it-maintained-open-issues = { repository = "svartalf/rust-battery" }
 [dependencies]
 cfg-if = { workspace = true }
 num-traits = { workspace = true }
-uom = { workspace = true, features = ["autoconvert", "f32", "si"] }
+uom = { workspace = true, features = ["autoconvert"] }
 
 [target.'cfg(target_os = "linux")'.dependencies]
 lazycell = "~1.3"

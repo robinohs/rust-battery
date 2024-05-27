@@ -17,7 +17,7 @@ pub fn energy<T: AsRef<Path>>(path: T) -> Result<Option<Energy>> {
     let path = path.as_ref();
     debug_assert!(path.file_name().unwrap().to_string_lossy().starts_with("energy_"));
 
-    match get::<f32, _>(path) {
+    match get::<f64, _>(path) {
         Ok(Some(value_uwh)) => Ok(Some(microwatt_hour!(value_uwh))),
         Ok(None) => Ok(None),
         Err(e) => Err(e),
@@ -29,7 +29,7 @@ pub fn charge<T: AsRef<Path>>(path: T) -> Result<Option<ElectricCharge>> {
     let path = path.as_ref();
     debug_assert!(path.file_name().unwrap().to_string_lossy().starts_with("charge_"));
 
-    match get::<f32, _>(path) {
+    match get::<f64, _>(path) {
         Ok(Some(value_uah)) if value_uah > 1.0 => Ok(Some(microampere_hour!(value_uah))),
         Ok(Some(_)) => Ok(None),
         Ok(None) => Ok(None),
@@ -42,7 +42,7 @@ pub fn voltage<T: AsRef<Path>>(path: T) -> Result<Option<ElectricPotential>> {
     let path = path.as_ref();
     debug_assert!(path.file_name().unwrap().to_string_lossy().starts_with("voltage_"));
 
-    match get::<f32, _>(path) {
+    match get::<f64, _>(path) {
         Ok(Some(value_uv)) if value_uv > 1.0 => Ok(Some(microvolt!(value_uv))),
         Ok(Some(_)) => Ok(None),
         Ok(None) => Ok(None),
@@ -55,7 +55,7 @@ pub fn power<T: AsRef<Path>>(path: T) -> Result<Option<Power>> {
     let path = path.as_ref();
     debug_assert!(path.file_name().unwrap().to_string_lossy().starts_with("power_"));
 
-    match get::<f32, _>(path) {
+    match get::<f64, _>(path) {
         Ok(Some(value_uw)) if value_uw > 10_000.0 => Ok(Some(microwatt!(value_uw))),
         Ok(Some(_)) => Ok(None),
         Ok(None) => Ok(None),
