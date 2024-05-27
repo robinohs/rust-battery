@@ -6,8 +6,9 @@ use std::str;
 ///
 /// Unknown can mean either controller returned unknown,
 /// or not able to retrieve state due to some error.
-#[derive(Debug, Eq, PartialEq, Copy, Clone)]
+#[derive(Default, Debug, Eq, PartialEq, Copy, Clone)]
 pub enum State {
+    #[default]
     Unknown,
     Charging,
     Discharging,
@@ -53,11 +54,5 @@ impl fmt::Display for State {
         };
 
         write!(f, "{}", display)
-    }
-}
-
-impl Default for State {
-    fn default() -> Self {
-        State::Unknown
     }
 }

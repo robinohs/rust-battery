@@ -4,9 +4,9 @@ use std::str;
 use crate::Error;
 
 /// Possible battery technologies.
-#[derive(Debug, Eq, PartialEq, Copy, Clone)]
+#[derive(Default, Debug, Eq, PartialEq, Copy, Clone)]
 pub enum Technology {
-    Unknown,
+    #[default] Unknown,
     LithiumIon,
     LeadAcid,
     LithiumPolymer,
@@ -63,11 +63,5 @@ impl fmt::Display for Technology {
         };
 
         write!(f, "{}", display)
-    }
-}
-
-impl Default for Technology {
-    fn default() -> Self {
-        Technology::Unknown
     }
 }
