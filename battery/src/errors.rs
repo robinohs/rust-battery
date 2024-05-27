@@ -77,33 +77,3 @@ impl From<io::Error> for Error {
         }
     }
 }
-
-#[cfg(any(target_os = "dragonfly", target_os = "freebsd"))]
-mod nix_impl {
-    use std::io;
-
-    use super::Error;
-
-    impl From<nix::Error> for Error {
-        fn from(e: nix::Error) -> Self {
-            match e {
-                nix::Error::Sys(errno) => Error {
-                    source: io::Error::from_raw_os_error(errno as i32),
-                    description: Some(errno.desc().into()),
-                },
-                nix::Error::InvalidPath => Error {
-                    source: io::Error::new(io::ErrorKind::InvalidInput, e),
-                    description: Some("Invalid path".into()),
-                },
-                nix::Error::InvalidUtf8 => Error {
-                    source: io::Error::new(io::ErrorKind::InvalidData, e),
-                    description: Some("Invalid UTF-8 string".into()),
-                },
-                nix::Error::UnsupportedOperation => Error {
-                    source: io::Error::new(io::ErrorKind::Other, e),
-                    description: Some("Unsupported operation".into()),
-                },
-            }
-        }
-    }
-}

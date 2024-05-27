@@ -17,12 +17,6 @@ cfg_if! {
         pub type Manager = windows::PowerManager;
         pub type Iterator = windows::PowerIterator;
         pub type Device = windows::PowerDevice;
-    } else if #[cfg(any(target_os = "dragonfly", target_os = "freebsd"))] {
-        mod freebsd;
-
-        pub type Manager = freebsd::IoCtlManager;
-        pub type Iterator = freebsd::IoCtlIterator;
-        pub type Device = freebsd::IoCtlDevice;
     } else {
         compile_error!("Support for this target OS is not implemented yet!\n \
             You may want to create an issue: https://github.com/svartalf/rust-battery/issues/new");

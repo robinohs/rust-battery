@@ -1,5 +1,9 @@
 [workspace]
-members = [
-    "battery",
-    "battery-ffi",
-]
+members = ["battery"]
+
+[workspace.dependencies]
+approx = "0.5.1"
+cfg-if = "1.0"
+num-traits = { version = "0.2", default-features = false }
+tempfile = "3.10.1"
+uom = "0.36.0"

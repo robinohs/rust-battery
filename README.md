@@ -12,17 +12,20 @@
 
 ## Table of contents
 
- * [Overview](#overview)
- * [Supported platforms](#supported-platforms)
- * [Install](#install)
- * [Examples](#examples)
- * [FFI bindings](#ffi-bindings)
- * [Users](#users)
- * [License](#license)
- * [Donations](#donations)
- * [Contributors](#contributors)
- * [Backers](#backers)
- * [Sponsors](#sponsors)
+- [battery](#battery)
+  - [Table of contents](#table-of-contents)
+  - [Overview](#overview)
+  - [Supported platforms](#supported-platforms)
+  - [Install](#install)
+  - [Examples](#examples)
+  - [Users](#users)
+    - [battop](#battop)
+    - [starship](#starship)
+  - [License](#license)
+  - [Donations](#donations)
+  - [Contributors](#contributors)
+  - [Backers](#backers)
+  - [Sponsors](#sponsors)
 
 ## Overview
 
@@ -34,12 +37,10 @@ as a typed values, recalculated as necessary to be returned as a [SI measurement
 
 ## Supported platforms
 
-* Linux 2.6.39+
-* MacOS 10.10+
-* iOS
-* Windows 7+
-* FreeBSD
-* DragonFlyBSD
+- Linux 2.6.39+
+- MacOS 10.10+
+- iOS
+- Windows 7+
 
 Do note that iOS implementation uses IOKit bindings, your application
 might be automatically rejected by Apple based on that fact. Use it on your own risk.
@@ -77,14 +78,6 @@ fn main() -> Result<(), battery::Error> {
 
 See the `battery/examples/` folder in the [repository](https://github.com/svartalf/rust-battery/blob/master/battery/examples/simple.rs)
 for additional examples.
-
-## FFI bindings
-
-Experimental [battery-ffi](https://crates.io/crates/battery-ffi) crate provides the FFI bindings to the `battery` crate,
-so it can be used with other languages, such as C, Python or NodeJS.
-
-Check its [README](https://github.com/svartalf/rust-battery/tree/master/battery-ffi)
-and [documentation](https://docs.rs/battery-ffi) for details.
 
 ## Users
 
