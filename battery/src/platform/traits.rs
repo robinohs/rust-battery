@@ -32,6 +32,8 @@ pub trait BatteryIterator: Iterator<Item = Result<<Self as BatteryIterator>::Dev
 
 /// Underline type for `Battery`, different for each supported platform.
 pub trait BatteryDevice: Sized + Debug {
+    fn name(&self) -> Option<String>;
+
     fn state_of_health(&self) -> Ratio {
         // It it possible to get values greater that `1.0`, which is logical nonsense,
         // forcing the value to be in `0.0..=1.0` range

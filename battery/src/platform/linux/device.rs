@@ -123,6 +123,16 @@ impl BatteryDevice for SysFsDevice {
     fn cycle_count(&self) -> Option<u32> {
         self.source.cycle_count
     }
+
+    fn name(&self) -> Option<String> {
+        self.root
+            .file_name()
+            .map(Some)
+            .unwrap_or(None)
+            .map(|f| f.to_str())
+            .unwrap_or(None)
+            .map(|f| f.to_owned())
+    }
 }
 
 impl fmt::Debug for SysFsDevice {
