@@ -8,7 +8,6 @@
 //! * Linux 2.6.39+
 //! * MacOS 10.10+
 //! * Windows 7+
-//! * DragonFlyBSD
 //!
 //! ## Examples
 //!
