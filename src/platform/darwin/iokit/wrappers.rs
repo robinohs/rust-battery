@@ -1,7 +1,7 @@
 use std::mem;
 use std::ops::{Deref, DerefMut};
 
-use core_foundation::base::{kCFAllocatorDefault, kCFNull, mach_port_t, CFType, TCFType};
+use core_foundation::base::{CFType, TCFType, kCFAllocatorDefault, kCFNull, mach_port_t};
 use core_foundation::dictionary::{CFDictionary, CFMutableDictionary, CFMutableDictionaryRef};
 use core_foundation::string::CFString;
 use mach::{kern_return, mach_port, port, traps};

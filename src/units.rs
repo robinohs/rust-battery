@@ -69,10 +69,10 @@
 #![allow(unused_macros)]
 
 // Re-exports for easier crate usage
+pub use uom::si::Unit;
 pub use uom::si::f64::{
     ElectricCharge, ElectricCurrent, ElectricPotential, Energy, Power, Ratio, ThermodynamicTemperature, Time,
 };
-pub use uom::si::Unit;
 pub use uom::si::{
     electric_charge, electric_current, electric_potential, energy, power, ratio, thermodynamic_temperature, time,
 };

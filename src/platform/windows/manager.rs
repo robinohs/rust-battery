@@ -1,8 +1,8 @@
 use std::fmt;
 
-use super::{ffi, PowerDevice, PowerIterator};
-use crate::platform::traits::BatteryManager;
+use super::{PowerDevice, PowerIterator, ffi};
 use crate::Result;
+use crate::platform::traits::BatteryManager;
 
 #[derive(Default)]
 pub struct PowerManager;

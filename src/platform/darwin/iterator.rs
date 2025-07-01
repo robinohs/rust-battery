@@ -1,9 +1,9 @@
 use std::fmt;
 use std::rc::Rc;
 
-use super::{iokit, IoKitDevice, IoKitManager};
-use crate::platform::traits::BatteryIterator;
+use super::{IoKitDevice, IoKitManager, iokit};
 use crate::Result;
+use crate::platform::traits::BatteryIterator;
 
 pub struct IoKitIterator {
     #[allow(dead_code)]

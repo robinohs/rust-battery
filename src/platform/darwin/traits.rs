@@ -1,7 +1,7 @@
 use std::fmt::Debug;
 
-use crate::units::{ElectricCharge, ElectricCurrent, ElectricPotential, ThermodynamicTemperature, Time};
 use crate::Result;
+use crate::units::{ElectricCharge, ElectricCurrent, ElectricPotential, ThermodynamicTemperature, Time};
 
 /// Used for IOPMPowerSource wrapper and for tests.
 ///

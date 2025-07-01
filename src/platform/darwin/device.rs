@@ -11,10 +11,10 @@ use std::fmt;
 use std::str;
 
 use super::traits::DataSource;
+use crate::Result;
 use crate::platform::traits::BatteryDevice;
 use crate::types::{State, Technology};
 use crate::units::{ElectricPotential, Energy, Power, ThermodynamicTemperature, Time};
-use crate::Result;
 
 pub struct IoKitDevice {
     source: Box<dyn DataSource>,
@@ -107,9 +107,7 @@ where
     T: DataSource,
 {
     fn from(ds: T) -> IoKitDevice {
-        IoKitDevice {
-            source: Box::new(ds),
-        }
+        IoKitDevice { source: Box::new(ds) }
     }
 }
 

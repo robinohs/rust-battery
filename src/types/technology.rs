@@ -6,7 +6,8 @@ use crate::Error;
 /// Possible battery technologies.
 #[derive(Default, Debug, Eq, PartialEq, Copy, Clone)]
 pub enum Technology {
-    #[default] Unknown,
+    #[default]
+    Unknown,
     LithiumIon,
     LeadAcid,
     LithiumPolymer,

@@ -6,7 +6,7 @@ use crate::platform::traits::*;
 use crate::units::{ElectricPotential, Energy, Power, Ratio, ThermodynamicTemperature};
 use crate::{Error, Result, State, Technology};
 
-use super::sysfs::{fs, DataBuilder, InstantData, Scope, Type};
+use super::sysfs::{DataBuilder, InstantData, Scope, Type, fs};
 
 pub struct SysFsDevice {
     root: PathBuf,

@@ -3,7 +3,7 @@
 // Functions here are copied from the `IOKit-sys` (https://crates.io/crates/iokit-sys) crate
 // and rewritten to use `core_foundation` types.
 
-use core_foundation::base::{mach_port_t, CFAllocatorRef};
+use core_foundation::base::{CFAllocatorRef, mach_port_t};
 use core_foundation::dictionary::{CFDictionaryRef, CFMutableDictionaryRef};
 use libc::c_char;
 use mach::{boolean, kern_return};

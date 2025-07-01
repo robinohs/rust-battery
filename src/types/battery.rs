@@ -1,8 +1,8 @@
 use std::fmt;
 use std::ops::{Deref, DerefMut};
 
-use crate::platform::traits::*;
 use crate::platform::Device;
+use crate::platform::traits::*;
 use crate::units::{ElectricPotential, Energy, Power, Ratio, ThermodynamicTemperature, Time};
 use crate::{State, Technology};
 

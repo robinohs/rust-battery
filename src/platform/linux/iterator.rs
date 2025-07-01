@@ -3,8 +3,8 @@ use std::fs::{self, ReadDir};
 use std::rc::Rc;
 
 use super::{SysFsDevice, SysFsManager};
-use crate::platform::traits::*;
 use crate::Result;
+use crate::platform::traits::*;
 
 pub struct SysFsIterator {
     #[allow(dead_code)]
@@ -19,10 +19,7 @@ impl BatteryIterator for SysFsIterator {
     fn new(manager: Rc<Self::Manager>) -> Result<Self> {
         let entries = fs::read_dir(manager.path())?;
 
-        Ok(SysFsIterator {
-            manager,
-            entries,
-        })
+        Ok(SysFsIterator { manager, entries })
     }
 }
 

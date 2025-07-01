@@ -5,8 +5,8 @@ use std::path::Path;
 use std::str::FromStr;
 
 use super::{Scope, Type};
-use crate::units::{ElectricCharge, ElectricPotential, Energy, Power};
 use crate::Result;
+use crate::units::{ElectricCharge, ElectricPotential, Energy, Power};
 
 // From the `errno.h`.
 // Easier than building whole `libc` dep.

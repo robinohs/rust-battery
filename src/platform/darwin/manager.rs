@@ -1,9 +1,9 @@
 use std::fmt;
 use std::ops::Deref;
 
-use super::{iokit, IoKitIterator};
-use crate::platform::traits::{BatteryIterator, BatteryManager};
+use super::{IoKitIterator, iokit};
 use crate::Result;
+use crate::platform::traits::{BatteryIterator, BatteryManager};
 
 pub struct IoKitManager(iokit::IoMasterPort);
 

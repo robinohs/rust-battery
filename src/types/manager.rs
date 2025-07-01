@@ -1,9 +1,9 @@
 use std::fmt;
 use std::rc::Rc;
 
-use crate::platform::traits::*;
 use crate::platform::Iterator as PlatformIterator;
 use crate::platform::Manager as PlatformManager;
+use crate::platform::traits::*;
 use crate::{Batteries, Battery, Result};
 
 /// Manager for batteries available in system.
@@ -32,9 +32,7 @@ impl Manager {
     pub fn new() -> Result<Manager> {
         let inner = PlatformManager::new()?;
 
-        Ok(Manager {
-            inner: Rc::new(inner),
-        })
+        Ok(Manager { inner: Rc::new(inner) })
     }
 
     /// Returns an iterator over available batteries.
