@@ -33,7 +33,7 @@ fn test_issue_28() {
         "capacity_level" => "Normal"
     );
 
-    let path = root.into_path();
+    let path = root.keep();
     let device = SysFsDevice::try_from(path.clone());
 
     assert!(device.is_ok());

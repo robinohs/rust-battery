@@ -27,7 +27,7 @@ fn test_issue_40() {
         "voltage_now" => 11829000
     );
 
-    let path = root.into_path();
+    let path = root.keep();
     let device = SysFsDevice::try_from(path.clone());
 
     assert!(device.is_ok());

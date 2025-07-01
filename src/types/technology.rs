@@ -63,6 +63,6 @@ impl fmt::Display for Technology {
             _ => "unknown",
         };
 
-        write!(f, "{}", display)
+        write!(f, "{display}")
     }
 }

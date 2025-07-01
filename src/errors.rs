@@ -63,7 +63,7 @@ impl StdError for Error {
 impl fmt::Display for Error {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         match &self.description {
-            Some(desc) => write!(f, "{}", desc),
+            Some(desc) => write!(f, "{desc}"),
             None => self.source.fmt(f),
         }
     }

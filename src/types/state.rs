@@ -53,6 +53,6 @@ impl fmt::Display for State {
             _ => "unknown",
         };
 
-        write!(f, "{}", display)
+        write!(f, "{display}")
     }
 }
